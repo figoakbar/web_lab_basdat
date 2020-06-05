@@ -72,12 +72,37 @@
 
     .navbar{
         top: 3%;
+        padding-left: 5%;
+        float : right;
     }
 
     .popular{
         padding-top: 15%;
-        padding-left: 3%;
+        padding-left: 5%;
         color: #363636;
+    }
+    .container .destination{
+        display : grid;
+        grid-template-columns: repeat(3,1fr);
+
+    }
+
+    .destination > img{
+        margin-top: 10%;
+        border-radius : 30px;
+        width : 200px;
+        height: 300px;
+    }
+
+    .destination{
+        padding-left: 5%;
+    }
+
+    .destination.london{
+        position: absolute;
+        top: 5%;
+        left: 10%;
+        color: white;
     }
 </style>
 <body>
@@ -88,7 +113,7 @@
                     <img src="7cd6dc7b34af544375336c288aec69da.jpg" alt="Snow" style="width:100%">
                     <h1 class = "text"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
                     <h2 class= "title">TRAVELY<h2>
-                    <button class="btn">Book Your Flight</button>
+                    <button class="btn">Share Your Experience</button>
                 </div>
 			</div>
 
@@ -100,16 +125,21 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="#">Posts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">My Bookings</a>
+                            <a class="nav-link" href="#">About Us</a>
                         </li>
                         </ul>
                     </div>
                 </nav>
-                <h2 class="popular">Popular Destination</h2>
                 <div class="container"> 
+                    <h2 class="popular">Popular Destination</h2>
+                    <div class ="destination">
+                        <img src ="76709-640x360-houses-of-parliament-and-london-eye-on-thames-from-above-640.jpg">
+                        <img src ="images.jpg">
+                    </div>
+                </div>
 			</div>
 </div>
 
