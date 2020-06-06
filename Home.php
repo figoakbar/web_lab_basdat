@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title></title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Travely</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
     .grid{
@@ -30,13 +31,13 @@
         width: 100%;
         height: 100vh;
         padding-left: 0px;
-        border-radius : 0px 30px 30px 0px;
+        border-radius : 0px 50px 50px 0px;
     }
 
     .container .btn {
         position: absolute;
         top: 60%;
-        left: 20%;
+        left: 21%;
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
         background-color: #fa6c2f;
@@ -47,6 +48,7 @@
         cursor: pointer;
         border-radius: 10px;
         text-align: center;
+        width: 200px;
     }
 
     .container .btn:hover {
@@ -73,7 +75,7 @@
     .navbar{
         top: 3%;
         padding-left: 5%;
-        float : right;
+        float: right;
     }
 
     .popular{
@@ -81,13 +83,12 @@
         padding-left: 5%;
         color: #363636;
     }
-    .container .destination{
-        display : grid;
-        grid-template-columns: repeat(3,1fr);
 
+    .destination .card{
+        border: none;
     }
 
-    .destination > img{
+    .destination .card-img{
         margin-top: 10%;
         border-radius : 30px;
         width : 200px;
@@ -96,13 +97,29 @@
 
     .destination{
         padding-left: 5%;
+        right : 10%;
+        display : grid;
+        grid-template-columns: repeat(3,1fr);
     }
 
-    .destination.london{
+    .profile{
+        float: right;
+        left : 10%;
+    }
+
+    .card-text{
         position: absolute;
-        top: 5%;
-        left: 10%;
+        top: 80%;
+        left: 5%;
         color: white;
+        padding: 12px 24px;
+    }
+    .card-title{
+        position: absolute;
+        top: 70%;
+        left: 3%;
+        color: white;
+        padding: 12px 24px;
     }
 </style>
 <body>
@@ -113,7 +130,7 @@
                     <img src="7cd6dc7b34af544375336c288aec69da.jpg" alt="Snow" style="width:100%">
                     <h1 class = "text"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
                     <h2 class= "title">TRAVELY<h2>
-                    <button class="btn">Share Your Experience</button>
+                    <button class="btn">Get Started</button>
                 </div>
 			</div>
 
@@ -125,23 +142,71 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Posts</a>
+                            <a class="nav-link" href="#">My Booking</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
                         </li>
                         </ul>
+                        <a class="nav-link"><img src="account.svg" alt="" height="50px" width="50px"></a>
                     </div>
                 </nav>
-                <div class="container"> 
-                    <h2 class="popular">Popular Destination</h2>
-                    <div class ="destination">
-                        <img src ="76709-640x360-houses-of-parliament-and-london-eye-on-thames-from-above-640.jpg">
-                        <img src ="images.jpg">
+                <h2 class="popular">Popular Destination</h2>
+                <div class ="destination">
+                    <div class="card text-white">
+                        <img class="card-img" src="6994.jpg" alt="Card image">
+                        <a href="#"><div class="card-img-overlay">
+                            <h5 class="card-title">United States</h5>
+                            <p class="card-text">Yellowstone</p>
+                        </div></a>
+                    </div>
+                    <div class="card text-white">
+                        <img class="card-img" src="5301.jpg" alt="Card image">
+                        <a href="#"><div class="card-img-overlay">
+                           <h5 class="card-title">Switzerland</h5>
+                            <p class="card-text">Alpen</p>
+                        </div></a>
+                    </div>
+                    <div class="card text-white">
+                        <img class="card-img" src="crop.jfif" alt="Card image">
+                        <a href="#"><div class="card-img-overlay">
+                            <h5 class="card-title">Japan</h5>
+                            <p class="card-text">Fuji</p>
+                        </div></a>
                     </div>
                 </div>
-			</div>
+                
+            
+    
 </div>
+<script>
+      $(document).ready(function(){
+        $('.card').hover(
+          function(){
+            $(this).animate({
+              marginTop: "-=1%",
+            },200);
+          },
+
+          function(){
+            $(this).animate({
+              marginTop: "0%",
+            },200);
+          }
+        );
+      });
+</script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js">
+    </script>
 
 </body>
 </html>
