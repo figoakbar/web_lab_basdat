@@ -16,10 +16,6 @@
         grid-template-columns: 60% 40%;
     }
 
-    .left-grid{
-        display : grid;
-        grid-template-rows :1fr;
-    }
     .container {
         position: relative;
         width: 100%;
@@ -148,7 +144,7 @@
                             <a class="nav-link" href="#">About Us</a>
                         </li>
                         </ul>
-                        <a class="nav-link"><img src="account.svg" alt="" height="50px" width="50px"></a>
+                        <a class="nav-link" href="#"><img src="account.svg" alt="" height="50px" width="50px"></a>
                     </div>
                 </nav>
                 <h2 class="popular">Popular Destination</h2>
