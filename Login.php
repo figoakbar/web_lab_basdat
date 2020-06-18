@@ -57,6 +57,8 @@
         padding-top: 50%;
         padding-left: 5%;
         right: 10%;
+        width: 80%;
+        right: 10%;
     }
     .form-control{
         width: 80%;
@@ -136,23 +138,6 @@
                     </div>
             
 </div>
-<script>
-      $(document).ready(function(){
-        $('.card').hover(
-          function(){
-            $(this).animate({
-              marginTop: "-=1%",
-            },200);
-          },
-
-          function(){
-            $(this).animate({
-              marginTop: "0%",
-            },200);
-          }
-        );
-      });
-</script>
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
