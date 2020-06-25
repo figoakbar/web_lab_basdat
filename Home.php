@@ -9,6 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 </head>
 <style>
     .grid{
@@ -103,19 +105,45 @@
         left : 10%;
     }
 
-    .card-text{
-        position: absolute;
-        top: 80%;
-        left: 5%;
-        color: white;
-        padding: 12px 24px;
+    .swiper-container {
+    height: 250px;
     }
-    .card-title{
-        position: absolute;
-        top: 70%;
-        left: 3%;
+
+    .swiper-slide {
+        display: flex;
+        align-items: flex-end;
+        background-size: cover;
+        border-radius: 7.5%;
         color: white;
-        padding: 12px 24px;
+    }
+
+    @media screen and (max-width: 990px) {
+
+        .container-landing .container-image {
+            border-top-right-radius: 0%;
+            border-bottom-right-radius: 0%;
+        
+        }
+    }
+
+    .container-landing-popular{
+        padding-top : 20%;
+        margin-left:3%;
+    }
+    .mb-0{
+        margin-left: 7%;
+        color: white;
+    }
+    .desc{
+        margin-left: 7%;
+        color:#fa6c2f;
+        font-weight: bold;
+    }
+    h2{
+        margin-bottom: 3%;
+    }
+    a:hover{
+        text-decoration: none;
     }
 </style>
 <body>
@@ -143,55 +171,77 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
                         </li>
+                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button"><img src="./account.svg" alt="" height="40px" width="40px"></a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="#">logout</a>
+                                </div>
+                        </li>
                         </ul>
-                        <a class="nav-link" href="#"><img src="account.svg" alt="" height="50px" width="50px"></a>
                     </div>
                 </nav>
-                <h2 class="popular">Popular Destination</h2>
-                <div class ="destination">
-                    <div class="card text-white">
-                        <img class="card-img" src="6994.jpg" alt="Card image">
-                        <a href="#"><div class="card-img-overlay">
-                            <h5 class="card-title">United States</h5>
-                            <p class="card-text">Yellowstone</p>
-                        </div></a>
-                    </div>
-                    <div class="card text-white">
-                        <img class="card-img" src="5301.jpg" alt="Card image">
-                        <a href="#"><div class="card-img-overlay">
-                           <h5 class="card-title">Switzerland</h5>
-                            <p class="card-text">Alpen</p>
-                        </div></a>
-                    </div>
-                    <div class="card text-white">
-                        <img class="card-img" src="crop.jfif" alt="Card image">
-                        <a href="#"><div class="card-img-overlay">
-                            <h5 class="card-title">Japan</h5>
-                            <p class="card-text">Fuji</p>
-                        </div></a>
+                <div class="container-landing-popular">
+                    <h2>Popular Destination</h2>
+                    <div class="swiper-container md-3">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" style="background-image: url('grant-village-lake-house-restaurant-02.jpg')">
+                               <div class="container">
+                               <a href="#"><h5 class="mb-0">United States</h5></a>
+                                    <p class="desc">Yellowstones</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide" style="background-image: url('The-Alps_01_graded-943x531.jpg')">
+                                <div class="container">
+                                <a href="#"><h5 class="mb-0">Switzerland</h5></a>
+                                    <p class="desc">Alpen</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide" style="background-image: url('Mount Fuji 13-1.jpg')">
+                                <div class="container">
+                                <a href="#"><h5 class="mb-0">Japan</h5></a>
+                                    <p class="desc">Fuji</p>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide" style="background-image: url('bali-beaches-sunset-wallpaper-4.jpg')">
+                                <div class="container">
+                                <a href="#"><h5 class="mb-0">Indonesia</h5></a>
+                                    <p class="desc">Bali</p>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide" style="background-image: url('sunset_kauai_hawaii_wallpaper_united_states-1024x768.jpg')">
+                                <div class="container">
+                                <a href="#"><h5 class="mb-0">India</h5></a>
+                                    <p class="desc">Goa</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
                 
             
     
 </div>
+<script src="https://unpkg.com/swiper/js/swiper.js"></script>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 <script>
-      $(document).ready(function(){
-        $('.card').hover(
-          function(){
-            $(this).animate({
-              marginTop: "-=1%",
-            },200);
-          },
+        var swiper = new Swiper('.swiper-container', {
 
-          function(){
-            $(this).animate({
-              marginTop: "0%",
-            },200);
-          }
+                slidesPerView: 2.5,
+                spaceBetween: 15,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                }
+
+                ,
+            }
+
         );
-      });
-</script>
+    </script>
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
