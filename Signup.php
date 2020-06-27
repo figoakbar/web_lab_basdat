@@ -1,3 +1,42 @@
+<?php
+
+require_once("config.php");
+
+if(isset($_POST['signup'])){
+
+    // filter data yang diinputkan
+    $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    // enkripsi password
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+
+    // menyiapkan query
+    $sql = "INSERT INTO user (id_user,email,username, password ,address) 
+            VALUES (:id_user, :email, :username, :password, :address)";
+    $stmt = $db->prepare($sql);
+
+    // bind parameter ke query
+    $params = array(
+        ":id" => $id,
+        ":email" => $email,
+        ":username" => $username,
+        ":password" => $password,
+        ":address" => $address
+    );
+
+    // eksekusi query untuk menyimpan ke database
+    $saved = $stmt->execute($params);
+
+    // jika query simpan berhasil, maka user sudah terdaftar
+    // maka alihkan ke halaman login
+    if($saved) header("Location: Login.php");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -135,8 +174,8 @@
 						<h1 style="font-weight: bold;">Sign Up</h1>
                         <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputName" style="font-weight: bold;">Name</label>
-                                        <input type="text" name ='name' class="form-control" id="inputName" placeholder="Name">
+                                        <label for="inputName" style="font-weight: bold;">Username</label>
+                                        <input type="text" name ='username' class="form-control" id="inputName" placeholder="Name">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail" style="font-weight: bold;">Email Address</label>
@@ -145,7 +184,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress" style="font-weight: bold;">Address</label>
-                                    <input type="text" name ='alamat' class="form-control" id="inputAddress" placeholder="Address">
+                                    <input type="text" name ='address' class="form-control" id="inputAddress" placeholder="Address">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -156,15 +195,31 @@
                                         <label for="inputPasswordConf" style="font-weight: bold;">Confirmed Password</label>
                                         <input type="password" name='confPass'  class="form-control" id="inputPasswordConf" placeholder="Confirmed Password">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                                    <button type="submit" class="btn btn-primary" nama='signup'>Sign Up</button>
                                 </div>
                     </form>
 			    </div>
 				<div class="login">
-					<p>Already Have an account? <span><a href="" style="color:#FB6E3B;">Login</a></span></p>
+					<p>Already Have an account? <span><a href="Login.php" style="color:#FB6E3B;">Login</a></span></p>
 				</div>
             
 </div>
+<script>
+        var password = document.getElementById("inputPassword")
+    , confirm_password = document.getElementById("inputPasswordCon");
+
+    function validatePassword(){
+    if(password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+        confirm_password.setCustomValidity('');
+    }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+
+</script>
 
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
