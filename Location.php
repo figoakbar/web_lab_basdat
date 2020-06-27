@@ -89,6 +89,7 @@
             <h1 class='slogan'>Lorem, ipsum dolor.</h1>
 	    </div>
 	</div>
+    <div style='text-align: center; padding-top: 5%;'><h1>Choose Your Destination</h1></div>
     <div class="container-landing-asia">
                     <h2>Asia</h2>
                     <div class="swiper-container md-3">
@@ -151,17 +152,17 @@
                                 </div>
                             </div>
 
-                            <div class="swiper-slide" style="background-image: url('bali-beaches-sunset-wallpaper-4.jpg')">
+                            <div class="swiper-slide" style="background-image: url('3099475.jpg')">
                                 <div class="container">
-                                <a href="#"><h5 class="mb-0">Indonesia</h5></a>
-                                    <p class="desc">Bali</p>
+                                <a href="#"><h5 class="mb-0">Portugal</h5></a>
+                                    <p class="desc">Algarve Coast</p>
                                 </div>
                             </div>
 
-                            <div class="swiper-slide" style="background-image: url('sunset_kauai_hawaii_wallpaper_united_states-1024x768.jpg')">
+                            <div class="swiper-slide" style="background-image: url('nature-landscape-mountains-chamonix-wallpaper-preview.jpg')">
                                 <div class="container">
-                                <a href="#"><h5 class="mb-0">India</h5></a>
-                                    <p class="desc">Goa</p>
+                                <a href="#"><h5 class="mb-0">France</h5></a>
+                                    <p class="desc">Chamonix</p>
                                 </div>
                             </div>
                         </div>
