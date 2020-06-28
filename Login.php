@@ -7,13 +7,13 @@ if(isset($_POST['login'])){
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM user WHERE username=:username OR email=:email";
+    $sql = "SELECT * FROM user WHERE username=:username AND password=:password";
     $stmt = $db->prepare($sql);
     
     // bind parameter ke query
     $params = array(
         ":username" => $username,
-        ":email" => $username
+        ":password" => $password
     );
 
     $stmt->execute($params);
@@ -22,15 +22,10 @@ if(isset($_POST['login'])){
 
     // jika user terdaftar
     if($user){
-        // verifikasi password
-        if(password_verify($password, $user["password"])){
-            // buat Session
             session_start();
             $_SESSION["user"] = $user;
-            // login sukses, alihkan ke halaman timeline
             header("Location: Home.php");
         }
-    }
 }
 ?>
 <!DOCTYPE html>
@@ -165,7 +160,7 @@ if(isset($_POST['login'])){
                                 <label style="font-weight: bold;">Password</label>
                                 <input type="Password" name="password" class="form-control" placeholder="Password">
                             </div>
-                            <button type="submit" class="btn btn-primary" name ="login" style="margin-top: 10px; float: right; width: 20%;">Login</button>
+                            <button type="submit" class="btn btn-primary" name="login" style="margin-top: 10px; float: right; width: 20%;">Login</button>
                         </form>
                     </div>
                     <div class="signUp">
