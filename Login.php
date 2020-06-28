@@ -1,89 +1,36 @@
-<?php
-// Initialize the session
-session_start();
+<?php 
 
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: Home.php");
-    exit;
-}
- 
-// Include config file
-require_once "config.php";
- 
-// Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = "";
- 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
-    
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    
-    // Validate credentials
-    if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
-            // Set parameters
-            $param_username = $username;
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Store result
-                mysqli_stmt_store_result($stmt);
-                
-                // Check if username exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
-                            session_start();
-                            
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                            
-                            // Redirect user to welcome page
-                            header("location: welcome.php");
-                        } else{
-                            // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
-                        }
-                    }
-                } else{
-                    // Display an error message if username doesn't exist
-                    $username_err = "No account found with that username.";
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+require_once("config.php");
 
-            // Close statement
-            mysqli_stmt_close($stmt);
+if(isset($_POST['login'])){
+
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $sql = "SELECT * FROM user WHERE username=:username OR email=:email";
+    $stmt = $db->prepare($sql);
+    
+    // bind parameter ke query
+    $params = array(
+        ":username" => $username,
+        ":email" => $username
+    );
+
+    $stmt->execute($params);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // jika user terdaftar
+    if($user){
+        // verifikasi password
+        if(password_verify($password, $user["password"])){
+            // buat Session
+            session_start();
+            $_SESSION["user"] = $user;
+            // login sukses, alihkan ke halaman timeline
+            header("Location: Home.php");
         }
     }
-    
-    // Close connection
-    mysqli_close($link);
 }
 ?>
 <!DOCTYPE html>
@@ -208,17 +155,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                 </nav>
                 <div class="form">
-                        <form style="width: 20cm;" action="" method="post"> 
+                        <form style="width: 20cm;" action="" method='post'> 
                             <h1 style="font-weight: bold;">Login</h1>
                             <div class="form-group">
-                                <label for="exampleInputPassword1" style="font-weight: bold;">Email Address</label>
-                                <input type="text" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email Address">
+                                <label  style="font-weight: bold;">Username</label>
+                                <input type="text" name="username" class="form-control" placeholder="Username">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1"  style="font-weight: bold;">Password</label>
-                                <input type="Password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <label style="font-weight: bold;">Password</label>
+                                <input type="Password" name="password" class="form-control" placeholder="Password">
                             </div>
-                            <button type="submit" class="btn btn-primary" style="margin-top: 10px; float: right; width: 20%;">Login</button>
+                            <button type="submit" class="btn btn-primary" name ="login" style="margin-top: 10px; float: right; width: 20%;">Login</button>
                         </form>
                     </div>
                     <div class="signUp">
