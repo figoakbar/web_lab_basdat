@@ -1,3 +1,4 @@
+<?php require_once("auth.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,7 +176,7 @@
                             role="button"><img src="./account.svg" alt="" height="40px" width="40px"></a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
                                     <a class="dropdown-item" href="#">Profile</a>
-                                    <a class="dropdown-item" href="#">logout</a>
+                                    <a class="dropdown-item" href="Logout.php">logout</a>
                                 </div>
                         </li>
                         </ul>
