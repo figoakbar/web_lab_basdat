@@ -5,21 +5,20 @@ require_once("config.php");
 if(isset($_POST['signup'])){
 
     // filter data yang diinputkan
-    $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $address = $_POST["address"];
+    $username = $_POST["username"];
     // enkripsi password
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $password = $_POST["password"];
+    $email = $_POST["email"];
 
 
     // menyiapkan query
-    $sql = "INSERT INTO user (id_user,email,username, password ,address) 
-            VALUES (:id_user, :email, :username, :password, :address)";
+    $sql = "INSERT INTO user (email,username, password ,address) 
+            VALUES (:email, :username, :password, :address)";
     $stmt = $db->prepare($sql);
 
     // bind parameter ke query
     $params = array(
-        ":id" => $id,
         ":email" => $email,
         ":username" => $username,
         ":password" => $password,
@@ -195,7 +194,7 @@ if(isset($_POST['signup'])){
                                         <label for="inputPasswordConf" style="font-weight: bold;">Confirmed Password</label>
                                         <input type="password" name='confPass'  class="form-control" id="inputPasswordConf" placeholder="Confirmed Password">
                                     </div>
-                                    <button type="submit" class="btn btn-primary" nama='signup'>Sign Up</button>
+                                    <button type="submit" class="btn btn-primary" name='signup'>Sign Up</button>
                                 </div>
                     </form>
 			    </div>
