@@ -10,28 +10,30 @@ if(isset($_POST['signup'])){
     // enkripsi password
     $password = $_POST["password"];
     $email = $_POST["email"];
+    $confPass = $_POST["confPass"];
 
+    if($password == $confPass){
+        // menyiapkan query
+        $sql = "INSERT INTO user (email,username, password ,address) 
+                VALUES (:email, :username, :password, :address)";
+        $stmt = $db->prepare($sql);
 
-    // menyiapkan query
-    $sql = "INSERT INTO user (email,username, password ,address) 
-            VALUES (:email, :username, :password, :address)";
-    $stmt = $db->prepare($sql);
+        // bind parameter ke query
+        $params = array(
+            ":email" => $email,
+            ":username" => $username,
+            ":password" => $password,
+            ":address" => $address
+        );
 
-    // bind parameter ke query
-    $params = array(
-        ":email" => $email,
-        ":username" => $username,
-        ":password" => $password,
-        ":address" => $address
-    );
+        // eksekusi query untuk menyimpan ke database
+        $saved = $stmt->execute($params);
 
-    // eksekusi query untuk menyimpan ke database
-    $saved = $stmt->execute($params);
-
-    // jika query simpan berhasil, maka user sudah terdaftar
-    // maka alihkan ke halaman login
-    if($saved) header("Location: Login.php");
-}
+        // jika query simpan berhasil, maka user sudah terdaftar
+        // maka alihkan ke halaman login
+        if($saved) header("Location: Login.php");
+    }
+    
 
 ?>
 
