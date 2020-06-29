@@ -1,4 +1,5 @@
 <?php require_once("auth.php"); ?>
+<?php include("connect.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,7 +156,7 @@
                     <img src="7cd6dc7b34af544375336c288aec69da.jpg" alt="Snow" style="width:100%">
                     <h1 class = "text"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
                     <h2 class= "title">TRAVELY<h2>
-                    <button class="btn">Get Started</button>
+                    <button class="btn" onclick='top.location="Location.php"' >Get Started</button>
                 </div>
 			</div>
 
@@ -186,16 +187,16 @@
                     <h2>Popular Destination</h2>
                     <div class="swiper-container md-3">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" style="background-image: url('grant-village-lake-house-restaurant-02.jpg')">
-                               <div class="container">
-                               <a href="#"><h5 class="mb-0">United States</h5></a>
-                                    <p class="desc">Yellowstones</p>
-                                </div>
-                            </div>
                             <div class="swiper-slide" style="background-image: url('The-Alps_01_graded-943x531.jpg')">
                                 <div class="container">
                                 <a href="#"><h5 class="mb-0">Switzerland</h5></a>
                                     <p class="desc">Alpen</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide" style="background-image: url('nature-landscape-mountains-chamonix-wallpaper-preview.jpg')">
+                                <div class="container">
+                                <a href="#"><h5 class="mb-0">France</h5></a>
+                                    <p class="desc">Chamonix</p>
                                 </div>
                             </div>
                             <div class="swiper-slide" style="background-image: url('Mount Fuji 13-1.jpg')">
