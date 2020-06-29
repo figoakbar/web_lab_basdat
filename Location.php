@@ -7,21 +7,21 @@
     <title>Travely</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-    <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 </head>
 <style>
-
     .navbar{
         top: 3%;
         padding-left: 5%;
-        float: left;
+        float: right;
     }
+
     .title{
         margin: 3%;
     }
+
     .title-image{
             background-image: url('38580.jpg');
             background-size:cover;
@@ -31,6 +31,7 @@
         padding: 5%;
         color: white;
     }
+
     .popular{
         padding-top: 15%;
         padding-left: 5%;
@@ -63,27 +64,55 @@
         padding-top : 7%;
         margin-left:3%;
     }
+
     .container-landing-europe{
         padding-top: 7%;
         margin-left:3%;
     }
+
     .mb-0{
         margin-left: 7%;
         color: white;
     }
+
     .desc{
         margin-left: 7%;
         color:#fa6c2f;
         font-weight: bold;
     }
+
     h2{
         margin-bottom: 3%;
     }
+    
     a:hover{
         text-decoration: none;
     }
+
 </style>
 <body>
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">My Booking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button"><img src="./account.svg" alt="" height="40px" width="40px"></a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="Logout.php">logout</a>
+                                </div>
+                        </li>
+                        </ul>
+                    </div>
+                </nav>
     <h2 class= "title">TRAVELY<h2>
     <div class="title-image" style="padding-bottom: 200px; margin: 0px;">
 	    <div class="container" style="margin-top: 0px;">
