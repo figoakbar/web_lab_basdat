@@ -29,6 +29,7 @@
 
     .slogan{
         padding: 5%;
+        color: white;
     }
     .popular{
         padding-top: 15%;
