@@ -176,7 +176,7 @@
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
                             role="button"><img src="./account.svg" alt="" height="40px" width="40px"></a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="profile.php">Profile</a>
                                     <a class="dropdown-item" href="Logout.php">logout</a>
                                 </div>
                         </li>
