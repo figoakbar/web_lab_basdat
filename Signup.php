@@ -13,12 +13,10 @@ if(isset($_POST['signup'])){
     $confPass = $_POST["confPass"];
 
     if($password == $confPass){
-        // menyiapkan query
         $sql = "INSERT INTO user (email,username, password ,address) 
                 VALUES (:email, :username, :password, :address)";
         $stmt = $db->prepare($sql);
 
-        // bind parameter ke query
         $params = array(
             ":email" => $email,
             ":username" => $username,
@@ -26,11 +24,7 @@ if(isset($_POST['signup'])){
             ":address" => $address
         );
 
-        // eksekusi query untuk menyimpan ke database
         $saved = $stmt->execute($params);
-
-        // jika query simpan berhasil, maka user sudah terdaftar
-        // maka alihkan ke halaman login
         if($saved) header("Location: Login.php");
     }
 }
