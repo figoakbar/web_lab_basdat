@@ -33,6 +33,7 @@ if(isset($_POST['signup'])){
         // maka alihkan ke halaman login
         if($saved) header("Location: Login.php");
     }
+}
     
 
 ?>
@@ -205,22 +206,6 @@ if(isset($_POST['signup'])){
 				</div>
             
 </div>
-<script>
-        var password = document.getElementById("inputPassword")
-    , confirm_password = document.getElementById("inputPasswordCon");
-
-    function validatePassword(){
-    if(password.value != confirm_password.value) {
-        confirm_password.setCustomValidity("Passwords Don't Match");
-    } else {
-        confirm_password.setCustomValidity('');
-    }
-    }
-
-    password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;
-
-</script>
 
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -233,6 +218,5 @@ if(isset($_POST['signup'])){
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js">
     </script>
-
 </body>
 </html>
