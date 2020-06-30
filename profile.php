@@ -1,4 +1,32 @@
 <?php require_once("auth.php"); ?>
+<?php
+
+include("connect.php");
+
+// cek apakah tombol simpan sudah diklik atau blum?
+if(isset($_POST['edit'])){
+
+
+    $address = $_POST["address"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $email = $_POST["email"];
+    $confPass = $_POST["confPass"];
+
+    // buat query update
+    if($password == $confPass){
+        $sql = "UPDATE user SET username ='$username ', address='$address', password='$password', email='$email'";
+        $query = mysqli_query($db, $sql);
+        if( $query ) {
+            session_start();
+            header('Location: profile.php');
+        } 
+    }
+
+
+}
+
+?>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +84,7 @@
             <div class="card">
                 <div class="card-body text-center">
 
-                    <img class="img img-responsive rounded-circle mb-5" width="160" src="" >
+                    <img class="img img-responsive rounded-circle mb-5" width="160" src="account.svg" />
                     
                     <h3><?php echo  $_SESSION["user"]["username"] ?></h3>
                     <p><?php echo $_SESSION["user"]["email"] ?></p>
