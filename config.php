@@ -5,6 +5,8 @@ $db_user = "root";
 $db_pass = "";
 $db_name = "travely";
 
+$mysqli = new mysqli("localhost","root","","travely");
+
 try {    
     //create PDO connection 
     $db = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
