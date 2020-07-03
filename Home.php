@@ -187,38 +187,21 @@
                     <h2>Popular Destination</h2>
                     <div class="swiper-container md-3">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" style="background-image: url('The-Alps_01_graded-943x531.jpg')">
+                        <?php
+                            $data = $db->query("SELECT * FROM `destination`");
+                            $no = 0;
+                            while ($row = $data->fetch_array()){
+                                $no++;
+                        ?>
+                            <div class="swiper-slide" style="background-image: url('<?php echo $row['foto_wisata'] ?>')">
                                 <div class="container">
-                                <a href="#"><h5 class="mb-0">Switzerland</h5></a>
-                                    <p class="desc">Alpen</p>
+                                <a href="#"><h5 class="mb-0"><?php echo $row['negara'] ?></h5></a>
+                                    <p class="desc"><?php echo $row['wisata'] ?></p>
                                 </div>
                             </div>
-                            <div class="swiper-slide" style="background-image: url('nature-landscape-mountains-chamonix-wallpaper-preview.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">France</h5></a>
-                                    <p class="desc">Chamonix</p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" style="background-image: url('Mount Fuji 13-1.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">Japan</h5></a>
-                                    <p class="desc">Fuji</p>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide" style="background-image: url('bali-beaches-sunset-wallpaper-4.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">Indonesia</h5></a>
-                                    <p class="desc">Bali</p>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide" style="background-image: url('sunset_kauai_hawaii_wallpaper_united_states-1024x768.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">India</h5></a>
-                                    <p class="desc">Goa</p>
-                                </div>
-                            </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
