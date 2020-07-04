@@ -5,7 +5,6 @@ $db_user = "root";
 $db_pass = "";
 $db_name = "travely";
 
-$db = mysqli_connect($server, $user, $password, $nama_database);
 
 try {    
     //create PDO connection 
