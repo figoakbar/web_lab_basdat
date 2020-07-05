@@ -95,18 +95,23 @@
     <h2 class= "title">TRAVELY<h2>
     <div class="title-image" style="padding-bottom: 200px; margin: 0px;">
 	    <div class="container" style="margin-top: 0px;">
-            <h1 class='slogan'>Lorem, ipsum dolor.</h1>
+            <h1 class='slogan'>Share Your Experience!</h1>
 	    </div>
 	</div>
         <form>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Destination</label>
             <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <?php
+                            $data = $db->query("SELECT `wisata` FROM `destination`");
+                            $no = 0;
+                            while ($row = $data->fetch_array()){
+                                $no++;
+                        ?>
+            <option><?php echo $row['wisata'] ?></option>
+            <?php
+                }
+            ?>
             </select>
         </div>
         <div class="form-group">
@@ -116,7 +121,7 @@
         </form>
         <form>
             <div class="form-group">
-                <label for="exampleFormControlFile1">Example file input</label>
+                <label for="exampleFormControlFile1">Photo</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
             </div>
         </form>
