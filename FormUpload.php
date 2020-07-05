@@ -67,6 +67,14 @@
     .form-group{
         width: 50%;
     }
+    form{
+        padding-top: 5%;
+    }
+    .btn{
+        width: 50%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
 
 </style>
 <body>
@@ -98,6 +106,7 @@
             <h1 class='slogan'>Share Your Experience!</h1>
 	    </div>
 	</div>
+    <center>
         <form>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Destination</label>
@@ -118,14 +127,13 @@
             <label for="exampleFormControlTextarea1">Caption</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        </form>
-        <form>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Photo</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
             </div>
+            <button type="submit" class="btn btn-primary" name='post'>Post</button>
         </form>
-
+    <center>
 
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
