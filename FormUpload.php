@@ -7,12 +7,13 @@ require_once("connect.php");
 if(isset($_POST['post'])){
 
     $caption = $_POST["caption"];
-    $destination = $_POST["destination"];
+    $id_destination = $_POST["id_destination"];
     $photo = $_POST["photos"];
-    $_SESSION['user_id']
+    $id_user = $_POST["id_user"];
 
-    $sql = "SELECT id_destination FROM `destination` WHERE `wisata` = `Alpen` ";
-
+    
+    $data = $db->query("INSERT INTO `user`(`id_destination`,`id_user`,`caption`, `photos`) VALUES (`$id_destination`,`$id_user`,`$caption`,`$photos`");
+    header("location:Location.php");
 
 }
     
@@ -148,14 +149,14 @@ if(isset($_POST['post'])){
         <form action ="" method ='post'>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Destination</label>
-            <select class="form-control" id="" name="destination">
+            <select class="form-control" id="" name="id_destination">
             <?php
-                            $data = $db->query("SELECT `id_destination`,`wisata` FROM `destination`");
-                            $no = 0;
-                            while ($row = $data->fetch_array()){
-                                $no++;
-                        ?>
-            <option><?php echo $row['wisata'] ?></option>
+                $data = $db->query("SELECT `id_destination`,`wisata` FROM `destination`");
+                $no = 0;
+                while ($row = $data->fetch_array()){
+                    $no++;
+            ?>
+            <option value="<?php echo $result['id_destination'] ?>" ><?php echo $row['wisata'] ?></option>
             <?php
                 }
             ?>
@@ -170,6 +171,19 @@ if(isset($_POST['post'])){
                 <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
             </div>
             <button type="submit" class="btn btn-primary" name='post'>Post</button>
+            <div class="form-group">
+			<?php
+			if ($_SESSION['user']) {
+				$username = isset($_GET['user']) ? $_GET['user'] : '';
+                $user = $db->query("SELECT * FROM `user` WHERE `username`= '.$_SESSION[user].'");
+				while ($nama = $user->fetch_array()) {
+				?>
+					<input type="hidden" name="id_user" class="form-control" value="<?php echo $nama['id_user'] ?>">
+                <?php
+                    }
+			}
+			?>
+		</div>
         </form>
     <center>
 
