@@ -1,5 +1,23 @@
 <?php require_once("auth.php"); ?>
 <?php include("connect.php"); ?>
+<?php
+
+require_once("connect.php");
+
+if(isset($_POST['post'])){
+
+    $caption = $_POST["caption"];
+    $destination = $_POST["destination"];
+    $photo = $_POST["photos"];
+    $_SESSION['user_id']
+
+    $sql = "SELECT id_destination FROM `destination` WHERE `wisata` = `Alpen` ";
+
+
+}
+    
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +33,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 </head>
 <style>
-      .navbar{
+    .navbar{
         top: 3%;
         padding-left: 5%;
         float: right;
@@ -66,14 +84,34 @@
 
     .form-group{
         width: 50%;
+        text-align: left;
     }
+
     form{
         padding-top: 5%;
     }
+
     .btn{
         width: 50%;
         margin-top: 3%;
         margin-bottom: 3%;
+        background-color: #fa6c2f;
+        color: white;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 5%;
+    }
+
+    .btn:hover {
+        background-color: black;
+        color: white;
+    }
+    span{
+        display: none;
     }
 
 </style>
@@ -107,12 +145,12 @@
 	    </div>
 	</div>
     <center>
-        <form>
+        <form action ="" method ='post'>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Destination</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="" name="destination">
             <?php
-                            $data = $db->query("SELECT `wisata` FROM `destination`");
+                            $data = $db->query("SELECT `id_destination`,`wisata` FROM `destination`");
                             $no = 0;
                             while ($row = $data->fetch_array()){
                                 $no++;
@@ -125,11 +163,11 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Caption</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="caption" rows="3"></textarea>
         </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Photo</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
             </div>
             <button type="submit" class="btn btn-primary" name='post'>Post</button>
         </form>
