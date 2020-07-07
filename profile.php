@@ -18,7 +18,6 @@ if(isset($_POST['edit'])){
         $sql = "UPDATE user SET username ='$username ', address='$address', password='$password', email='$email'";
         $query = mysqli_query($db, $sql);
         if( $query ) {
-            session_start();
             header('Location: profile.php');
         } 
     }
