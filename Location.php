@@ -1,3 +1,5 @@
+<?php require_once("auth.php"); ?>
+<?php include("connect.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,6 +91,23 @@
         text-decoration: none;
     }
 
+    .btn {
+        background-color: #fa6c2f;
+        color: white;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 5%;
+    }
+
+   .btn:hover {
+        background-color: black;
+        color: white;
+    }
+
 </style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -124,38 +143,21 @@
                     <h2>Asia</h2>
                     <div class="swiper-container md-3">
                         <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-image: url('bali-beaches-sunset-wallpaper-4.jpg')">
+                        <?php
+                            $data = $db->query("SELECT * FROM `destination` WHERE `id_benua` = 1");
+                            $no = 0;
+                            while ($row = $data->fetch_array()){
+                                $no++;
+                        ?>
+                            <div class="swiper-slide" style="background-image: url('<?php echo $row['foto_wisata'] ?>')">
                                 <div class="container">
-                                <a href="#"><h5 class="mb-0">Indonesia</h5></a>
-                                    <p class="desc">Bali</p>
+                                <a href="#"><h5 class="mb-0"><?php echo $row['negara'] ?></h5></a>
+                                    <p class="desc"><?php echo $row['wisata'] ?></p>
                                 </div>
                             </div>
-                            <div class="swiper-slide" style="background-image: url('Mount Fuji 13-1.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">Japan</h5></a>
-                                    <p class="desc">Fuji</p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" style="background-image: url('sunset_kauai_hawaii_wallpaper_united_states-1024x768.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">India</h5></a>
-                                    <p class="desc">Goa</p>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide" style="background-image: url('nepal-ebc-gokyo-trekking.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">Nepal</h5></a>
-                                    <p class="desc">Gokyo Cho lake</p>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide" style="background-image: url('wp3780780.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">China</h5></a>
-                                    <p class="desc">Huanglong</p>
-                                </div>
-                            </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -163,41 +165,28 @@
                     <h2>Europe</h2>
                     <div class="swiper-container md-3">
                         <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-image: url('The-Alps_01_graded-943x531.jpg')">
+                        <?php
+                            $data = $db->query("SELECT * FROM `destination` WHERE `id_benua` = 2");
+                            $no = 0;
+                            while ($row = $data->fetch_array()){
+                                $no++;
+                        ?>
+                            <div class="swiper-slide" style="background-image: url('<?php echo $row['foto_wisata'] ?>')">
                                 <div class="container">
-                                <a href="#"><h5 class="mb-0">Switzerland</h5></a>
-                                    <p class="desc">Alpen</p>
+                                <a href="#"><h5 class="mb-0"><?php echo $row['negara'] ?></h5></a>
+                                    <p class="desc"><?php echo $row['wisata'] ?></p>
                                 </div>
                             </div>
-                            <div class="swiper-slide" style="background-image: url('8d5dfe070eb4a343d60393256292df26.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">Montegero</h5></a>
-                                    <p class="desc">Durmitor</p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" style="background-image: url('Fairy-Pools-Isle-of-Skye-Photos.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">Scotland</h5></a>
-                                    <p class="desc">Isle Of Skye</p>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide" style="background-image: url('3099475.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">Portugal</h5></a>
-                                    <p class="desc">Algarve Coast</p>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide" style="background-image: url('nature-landscape-mountains-chamonix-wallpaper-preview.jpg')">
-                                <div class="container">
-                                <a href="#"><h5 class="mb-0">France</h5></a>
-                                    <p class="desc">Chamonix</p>
-                                </div>
-                            </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
+                <div>
+                <center>
+                    <button class="btn" onclick='top.location="FormUpload.php"' >Share Your Experience!</button>
+                </center>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
