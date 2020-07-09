@@ -1,37 +1,26 @@
 <?php
 
-require_once("config.php");
+    include("connect.php");
+    if(isset($_POST['signup'])){
+        $address = $_POST["address"];
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $email = $_POST["email"];
+        $confPass = $_POST["confPass"];
 
-if(isset($_POST['signup'])){
+        $sql = "INSERT INTO user (email,username, password ,address) VALUES ('$email','$username', '$password' ,'$address')";
+        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
 
-    // filter data yang diinputkan
-    $address = $_POST["address"];
-    $username = $_POST["username"];
-    // enkripsi password
-    $password = $_POST["password"];
-    $email = $_POST["email"];
-    $confPass = $_POST["confPass"];
-
-    if($password == $confPass){
-        $sql = "INSERT INTO user (email,username, password ,address) 
-                VALUES (:email, :username, :password, :address)";
-        $stmt = $db->prepare($sql);
-
-        $params = array(
-            ":email" => $email,
-            ":username" => $username,
-            ":password" => $password,
-            ":address" => $address
-        );
-
-        $saved = $stmt->execute($params);
-        if($saved) header("Location: Login.php");
+        if($query){
+            echo "<script>alert('Your post was successfully posted'); 
+            window.location = 'Login.php';</script>";
+        } else {
+            echo "<script>alert('Try Again!'); 
+            window.location = 'Signup.php.php';</script>";
+        }
     }
-}
-    
-
 ?>
-
+    
 
 <!DOCTYPE html>
 <html>
