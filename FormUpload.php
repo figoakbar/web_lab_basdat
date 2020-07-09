@@ -6,10 +6,9 @@
     if(isset($_POST['post'])){
         $id_destination = $_POST['id_destination'];
         $caption = $_POST['caption'];
-        $photos = $_POST['photos'];
         $user = $_SESSION['user']['id_user'];
 
-        $sql = "INSERT INTO post (id_user,id_destination,caption,photos) VALUES ('$user','$id_destination','$caption','$photos')";
+        $sql = "INSERT INTO post (id_user,id_destination,caption) VALUES ('$user','$id_destination','$caption')";
         $query = mysqli_query($db, $sql) or die(mysqli_error($db));
 
         if($query){
@@ -95,7 +94,7 @@
     }
 
     .btn{
-        width: 50%;
+        width: 100%;
         margin-top: 3%;
         margin-bottom: 3%;
         background-color: #fa6c2f;
@@ -126,7 +125,7 @@
                     <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Booking</a>
+                    <a class="nav-link" href="#">My Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
@@ -169,12 +168,8 @@
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Caption</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" name="caption" rows="3"></textarea>
-            </div>
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Photo</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photos">
+                <button type="submit" class="btn btn-primary" name='post'>Post</button>
                 </div>
-            <button type="submit" class="btn btn-primary" name='post'>Post</button>
         </form>
     <center>
 
