@@ -7,10 +7,10 @@ if(isset($_POST['login'])){
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM user WHERE username=:username AND password=:password";
+    $sql = ("SELECT * FROM user WHERE `username`= '$username' and `password`= '$password'");
     $stmt = $db->prepare($sql);
     
-    // bind parameter ke query
+
     $params = array(
         ":username" => $username,
         ":password" => $password
@@ -20,7 +20,6 @@ if(isset($_POST['login'])){
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // jika user terdaftar
     if($user){
             session_start();
             $_SESSION["user"] = $user;
