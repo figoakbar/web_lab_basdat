@@ -117,7 +117,7 @@
                     <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Booking</a>
+                    <a class="nav-link" href="#">My Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
@@ -151,7 +151,7 @@
                         ?>
                             <div class="swiper-slide" style="background-image: url('<?php echo $row['foto_wisata'] ?>')">
                                 <div class="container">
-                                <a href="#"><h5 class="mb-0"><?php echo $row['negara'] ?></h5></a>
+                                <a href="#"><h5 class="mb-0"value="<?php echo $row['id_destination'] ?>"><?php echo $row['negara'] ?></h5></a>
                                     <p class="desc"><?php echo $row['wisata'] ?></p>
                                 </div>
                             </div>
@@ -173,7 +173,7 @@
                         ?>
                             <div class="swiper-slide" style="background-image: url('<?php echo $row['foto_wisata'] ?>')">
                                 <div class="container">
-                                <a href="#"><h5 class="mb-0"><?php echo $row['negara'] ?></h5></a>
+                                <a href="#"><h5 class="mb-0" value="<?php echo $row['id_destination'] ?>"><?php echo $row['negara'] ?></h5></a>
                                     <p class="desc"><?php echo $row['wisata'] ?></p>
                                 </div>
                             </div>
