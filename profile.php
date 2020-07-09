@@ -59,7 +59,7 @@ if(isset($_POST['edit'])){
                     <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Booking</a>
+                <a class="nav-link" href="#">My Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
