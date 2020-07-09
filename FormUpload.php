@@ -2,22 +2,24 @@
 <?php include("connect.php"); ?>
 <?php
 
-require_once("connect.php");
+    include("connect.php");
+    if(isset($_POST['post'])){
+        $id_destination = $_POST['id_destination'];
+        $caption = $_POST['caption'];
+        $photos = $_POST['photos'];
+        $user = $_SESSION['user']['id_user'];
 
-if(isset($_POST['post'])){
+        $sql = "INSERT INTO post (id_user,id_destination,caption,photos) VALUES ('$user','$id_destination','$caption','$photos')";
+        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
 
-    $caption = $_POST["caption"];
-    $id_destination = $_POST["id_destination"];
-    $photo = $_POST["photos"];
-    $id_user = $_POST["id_user"];
-
-    
-    $data = $db->query("INSERT INTO `user`(`id_destination`,`id_user`,`caption`, `photos`) VALUES (`$id_destination`,`$id_user`,`$caption`,`$photos`");
-    header("location:Location.php");
-
-}
-    
-
+        if($query){
+            echo "<script>alert('Your post was successfully posted'); 
+            window.location = 'Location.php';</script>";
+        } else {
+            echo "<script>alert('Try Again!'); 
+            window.location = 'FormUpload.php';</script>";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -147,43 +149,32 @@ if(isset($_POST['post'])){
 	</div>
     <center>
         <form action ="" method ='post'>
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Destination</label>
-            <select class="form-control" id="" name="id_destination">
-            <?php
-                $data = $db->query("SELECT `id_destination`,`wisata` FROM `destination`");
-                $no = 0;
-                while ($row = $data->fetch_array()){
-                    $no++;
-            ?>
-            <option value="<?php echo $result['id_destination'] ?>" ><?php echo $row['wisata'] ?></option>
-            <?php
-                }
-            ?>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Caption</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" name="caption" rows="3"></textarea>
-        </div>
             <div class="form-group">
-                <label for="exampleFormControlFile1">Photo</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
+                <label for="exampleFormControlSelect1">Destination</label>
+                <select class="form-control"  name="id_destination">
+                    <option value="">Choose Your Destination</option>                                                                       
+                    <?php 
+                    $data = $db->query("SELECT `wisata`, `id_destination` FROM `destination`");
+                    $no = 0;
+                    while ($row = $data->fetch_array()){
+                        $no++;
+                    ?>
+                    <option value="<?php echo $row['id_destination'] ?>">
+                    <?php echo $row['wisata'] ?></option>                                                  
+                    <?php
+                        }
+                    ?>
+                </select>
             </div>
-            <button type="submit" class="btn btn-primary" name='post'>Post</button>
             <div class="form-group">
-			<?php
-			if ($_SESSION['user']) {
-				$username = isset($_GET['user']) ? $_GET['user'] : '';
-                $user = $db->query("SELECT * FROM `user` WHERE `username`= '.$_SESSION[user].'");
-				while ($nama = $user->fetch_array()) {
-				?>
-					<input type="hidden" name="id_user" class="form-control" value="<?php echo $nama['id_user'] ?>">
-                <?php
-                    }
-			}
-			?>
-		</div>
+                <label for="exampleFormControlTextarea1">Caption</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="caption" rows="3"></textarea>
+            </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Photo</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photos">
+                </div>
+            <button type="submit" class="btn btn-primary" name='post'>Post</button>
         </form>
     <center>
 
