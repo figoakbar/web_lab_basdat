@@ -28,9 +28,19 @@
         background-size:cover
     }
     .card{
-        margin-left: 15%;
-        margin-top: 5%;
-        padding: 0%;
+        margin-left: 20%;
+        width: 40%;
+    }
+    .card-title{
+        color:#fa6c2f;
+    }
+    .card-text{
+        color: #545454;
+    }
+    .card-header{
+        color: black;
+        background-color:#fa6c2f;
+        margin:0%;
     }
 
 </style>
@@ -38,11 +48,11 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Booking</a>
+                    <a class="nav-link" href="#">My Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
@@ -58,12 +68,12 @@
         </div>
     </nav>
     <h2 class= "title">TRAVELY<h2>
-    <div class="card col-6">
-        <img class="card-img-top" src="17394.jpg" alt="Card image cap">
-        <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <div class="card text-white mb-3 col-6 bg-light">
+    <div class="card-header">Header</div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
     </div>
     
 </body>
