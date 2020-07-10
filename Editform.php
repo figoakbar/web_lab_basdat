@@ -128,6 +128,7 @@
 	    </div>
 	</div>
     <?php
+        include("connect.php");
         $edit = $_GET["edit"];
         $data = mysqli_query($db,"SELECT * FROM post WHERE id_post = $edit");
         while($row = mysqli_fetch_array($data)){
@@ -139,6 +140,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" value = "<?php echo $row['caption'] ?>" 
                 name="caption" rows="3"></textarea>
                 <input type="hidden" name="id_post" value="<?php echo $row['id_post']; ?>">
+                <input type="hidden" name="id_user" value="<?php echo $row['id_user']; ?>">
                 <button type="submit" class="btn btn-primary" name='post'>Post</button>
             </div>
         </form>
