@@ -41,7 +41,7 @@ if(isset($_POST['edit'])){
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 </head>
 <style>
-.navbar{
+    .navbar{
         top: 3%;
         padding-left: 5%;
         float: right;
@@ -49,6 +49,12 @@ if(isset($_POST['edit'])){
 
     .title{
         margin: 3%;
+    }
+
+    body{
+        padding: 0px;
+        background-image: url('87849.jpg');
+        background-size:cover;
     }
 </style>
 <body class="bg-light">
