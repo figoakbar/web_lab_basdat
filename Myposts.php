@@ -75,8 +75,9 @@
     </nav>
     <h2 class= "title">TRAVELY<h2>
     <?php
+        $user= $_SESSION['user']['id_user'];
         $data = $db->query("SELECT `id_post`,`wisata`, `caption`, `username` FROM `post` JOIN 
-        `destination` USING (`id_destination`) JOIN `user` USING (`id_user`)  WHERE `id_user` = $_GET[id_user]");
+        `destination` USING (`id_destination`) JOIN `user` USING (`id_user`)  WHERE `id_user` = '$user'");
         $no = 0;
         while ($row = $data->fetch_array()){
             $no++;
