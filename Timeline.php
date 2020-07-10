@@ -1,3 +1,5 @@
+<?php require_once("auth.php"); ?>
+<?php include("connect.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +32,7 @@
     .card{
         margin-left: 20%;
         width: 40%;
+        margin-top: 3%;
     }
     .card-title{
         color:#fa6c2f;
@@ -38,7 +41,7 @@
         color: #545454;
     }
     .card-header{
-        color: black;
+        color: white;
         background-color:#fa6c2f;
         margin:0%;
     }
@@ -52,7 +55,7 @@
                     <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Posts</a>
+                    <a class="nav-link" href= "Myposts.php?id_user=<?php echo  $_SESSION['user']['id_user'] ?>">My Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
@@ -60,7 +63,7 @@
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"role="button">
                     <img src="./account.svg" alt="" height="40px" width="40px"></a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="profile.php">Profile</a>
                             <a class="dropdown-item" href="Logout.php">logout</a>
                         </div>
                 </li>
@@ -68,14 +71,37 @@
         </div>
     </nav>
     <h2 class= "title">TRAVELY<h2>
-    <div class="card text-white mb-3 col-6 bg-light">
-    <div class="card-header">Header</div>
-    <div class="card-body">
-        <h5 class="card-title">Primary card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-    </div>
+    <?php
+        $data = $db->query("SELECT `wisata`, `caption`, `username` FROM `post` JOIN 
+        `destination` USING (`id_destination`) JOIN `user` USING (`id_user`)  WHERE `id_destination` = $_GET[id_destination]");
+        $no = 0;
+        while ($row = $data->fetch_array()){
+            $no++;
+    ?>
+        <div class="card text-white mb-3 col-6 bg-light">
+            <div class="card-header"><?php echo $row['username'] ?></div>
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $row['wisata'] ?></h5>
+                <p class="card-text"><?php echo $row['caption'] ?></p>
+            </div>
+        </div>
+        <?php
+            }
+        ?>
     
 </body>
+
+</script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js">
+    </script>
 
 </html>
