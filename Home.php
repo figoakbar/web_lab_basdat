@@ -168,7 +168,7 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">My Booking</a>
+                            <a class="nav-link" href=" Myposts.php?id_user=<?php echo  $_SESSION['user']['id_user'] ?>">My Posts</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
