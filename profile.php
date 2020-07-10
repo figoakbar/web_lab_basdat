@@ -1,31 +1,4 @@
 <?php require_once("auth.php"); ?>
-<?php
-
-include("connect.php");
-
-// cek apakah tombol simpan sudah diklik atau blum?
-if(isset($_POST['edit'])){
-
-
-    $address = $_POST["address"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $email = $_POST["email"];
-    $confPass = $_POST["confPass"];
-
-    // buat query update
-    if($password == $confPass){
-        $sql = "UPDATE user SET username ='$username ', address='$address', password='$password', email='$email'";
-        $query = mysqli_query($db, $sql);
-        if( $query ) {
-            header('Location: profile.php');
-        } 
-    }
-
-
-}
-
-?>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,6 +29,10 @@ if(isset($_POST['edit'])){
         background-image: url('87849.jpg');
         background-size:cover;
     }
+    .dropdown-item{
+        background-color :  #fa6c2f;
+        color: white;
+    }
 </style>
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -78,57 +55,73 @@ if(isset($_POST['edit'])){
                         </div>
                 </li>
             </ul>
-                    </div>
-                </nav>
+        </div>
+</nav>
     <h2 class= "title">TRAVELY<h2>
 
 <div class="container mt-5" style="font-size: 15px;">
     <div class="row">
         <div class="col-md-4">
+            <?php
+                include("connect.php");
+                $edit_user = $_SESSION['user']['id_user'];
+                $data = mysqli_query($db,"SELECT * FROM user WHERE id_user = $edit_user");
+                while($row = mysqli_fetch_array($data)){
+            ?>
 
             <div class="card">
                 <div class="card-body text-center">
 
                     <img class="img img-responsive rounded-circle mb-5" width="160" src="account.svg" />
                     
-                    <h3><?php echo  $_SESSION["user"]["username"] ?></h3>
-                    <p><?php echo $_SESSION["user"]["email"] ?></p>
+                    <h3><?php echo  $row["username"] ?></h3>
+                    <p><?php echo $row["email"] ?></p>
 
                     <p><a href="logout.php">Logout</a></p>
                 </div>
             </div>
-
-            
+            <?php
+                }
+            ?>
         </div>
+        <?php
+            include("connect.php");
+            $edit_user = $_SESSION['user']['id_user'];
+            $data = mysqli_query($db,"SELECT * FROM user WHERE id_user = $edit_user");
+            while($row = mysqli_fetch_array($data)){
+	    ?>
 
 
         <div class="col-md-8">
 
-            <form action="" method="post">
+            <form action="Editprofile.php" method="post">
             <div class="form-group">
                 <label for="formGroupExampleInput">Username</label>
-                <input type="text"name="username" class="form-control" id="formGroupExampleInput" placeholder="<?php echo  $_SESSION["user"]["username"] ?>">
+                <input type="text"name="username" class="form-control" placeholder="<?php echo  $row["username"] ?>">
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Email</label>
-                <input type="text"name="email" class="form-control" id="formGroupExampleInput2" placeholder="<?php echo $_SESSION["user"]["email"] ?>">
+                <input type="text"name="email" class="form-control"  placeholder="<?php echo $row["email"] ?>">
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Address</label>
-                <input type="text"name="address" class="form-control" id="formGroupExampleInput2" placeholder="<?php echo $_SESSION["user"]["address"] ?>">
+                <input type="text"name="address" class="form-control"  placeholder="<?php echo $row["address"] ?>">
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Password</label>
-                <input type="password"name="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+                <input type="password"name="password" class="form-control" placeholder="Password">
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Confirmed Password</label>
-                <input type="password"name="confPass" class="form-control" id="formGroupExampleInput2" placeholder="Confirmed Password">
+                <input type="password"name="confPass" class="form-control" placeholder="Confirmed Password">
             </div>
             <button type="submit" class="btn btn-primary" name='edit'>Edit Profile</button>
             </form>
            
         </div>
+        <?php
+            }
+        ?>
     
     </div>
 </div>
