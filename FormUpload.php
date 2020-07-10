@@ -125,7 +125,7 @@
                     <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Posts</a>
+                    <a class="nav-link" href=" Myposts.php?id_user=<?php echo  $_SESSION['user']['id_user'] ?>">My Posts</a>>My Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
@@ -133,7 +133,7 @@
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"role="button">
                     <img src="./account.svg" alt="" height="40px" width="40px"></a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="profile.php">Profile</a>
                             <a class="dropdown-item" href="Logout.php">logout</a>
                         </div>
                 </li>
