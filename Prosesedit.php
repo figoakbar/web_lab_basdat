@@ -4,8 +4,9 @@
 
         $caption = $_POST['caption'];
         $id_post = $_POST['id_post'];
+        $id_user = $_POST['id_user'];
 
-        $sql = "UPDATE `post` SET `caption`= '$caption' WHERE `id_post` = '$id_post'";
+        $sql = "UPDATE `post` SET `caption`= '$caption',`id_user`='$id_user' WHERE `id_post` = '$id_post'";
         $query = mysqli_query($db, $sql) or die(mysqli_error($db));
 
         if($query){
