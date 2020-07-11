@@ -8,16 +8,22 @@
         $email = $_POST["email"];
         $confPass = $_POST["confPass"];
 
-        $sql = "INSERT INTO user (email,username, password ,address) VALUES ('$email','$username', '$password' ,'$address')";
-        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
-
-        if($query){
-            echo "<script>alert('Your post was successfully posted'); 
-            window.location = 'Login.php';</script>";
-        } else {
-            echo "<script>alert('Try Again!'); 
-            window.location = 'Signup.php.php';</script>";
+        
+        if($password == $confPass){
+            $sql = "INSERT INTO user (email,username, password ,address) VALUES ('$email','$username', '$password' ,'$address')";
+            $query = mysqli_query($db, $sql) or die(mysqli_error($db));
+            if($query){
+                echo "<script>alert('Your account was successfully created'); 
+                window.location = 'Login.php';</script>";
+            } else {
+                echo "<script>alert('Try Again!'); 
+                window.location = 'Signup.php.php';</script>";
+            }
         }
+        else{
+            echo "<script>alert('Your Password Does Not Matched'); 
+                window.location = 'Signup.php';</script>";
+            }
     }
 ?>
     
