@@ -4,7 +4,7 @@
 
     if(isset($_POST['edit'])){
 
-
+        $id_user = $_POST['id_user'];
         $address = $_POST["address"];
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -12,11 +12,11 @@
         $confPass = $_POST["confPass"];
     
         if($password == $confPass){
-            $sql = "UPDATE user SET username ='$username ', address='$address', password='$password', email='$email'";
+            $sql = "UPDATE user SET username ='$username ', address='$address', password='$password', email='$email' WHERE id_user = '$id_user'";
             $query = mysqli_query($db, $sql);
 
             if($query){
-                echo "<script>alert('Your post was successfully edited'); 
+                echo "<script>alert('Your account was successfully edited'); 
                 window.location = 'Profile.php';</script>";
             } else {
                 echo "<script>alert('Try Again!'); 
