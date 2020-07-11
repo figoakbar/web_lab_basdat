@@ -121,11 +121,11 @@
 <nav class="navbar navbar-expand-lg navbar-light">
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=" Myposts.php?id_user=<?php echo  $_SESSION['user']['id_user'] ?>">My Posts</a>>My Posts</a>
+                    <a class="nav-link" href=" Myposts.php?id_user=<?php echo  $_SESSION['user']['id_user'] ?>">My Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
