@@ -26,11 +26,22 @@
 
     body{
         padding: 0px;
-        background-image: url('87849.jpg');
+        background-image: url('./images/sunday-river-landscape-4k-5k.jpg');
         background-size:cover;
     }
     .dropdown-item{
-        background-color :  #fa6c2f;
+        background-color:#fa6c2f;
+        color: white;
+    }
+    .btn{
+        background-color: #FB6E3B;
+        border: 3px solid #FB6E3B;
+    }
+    .btn:hover {
+        background-color: black;
+        border: 3px solid #FB6E3B;
+    }
+    label{
         color: white;
     }
 </style>
@@ -38,11 +49,11 @@
 <nav class="navbar navbar-expand-lg navbar-light">
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">My Posts</a>
+                <a class="nav-link" href="Myposts.php?id_user=<?php echo $_SESSION['user']['id_user'] ?>">My Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
@@ -50,7 +61,7 @@
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"role="button">
                     <img src="./account.svg" alt="" height="40px" width="40px"></a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="profile">Profile</a>
                             <a class="dropdown-item" href="Logout.php">logout</a>
                         </div>
                 </li>
@@ -115,6 +126,7 @@
                 <label for="formGroupExampleInput2">Confirmed Password</label>
                 <input type="password"name="confPass" class="form-control" placeholder="Confirmed Password">
             </div>
+            <input type="hidden" name="id_user" value="<?php echo $row['id_user']; ?>">
             <button type="submit" class="btn btn-primary" name='edit'>Edit Profile</button>
             </form>
            
