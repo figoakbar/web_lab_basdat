@@ -26,7 +26,7 @@
     }
     body{
         padding: 0px;
-        background-image: url('87849.jpg');
+        background-image: url('./images/87849.jpg');
         background-size:cover
     }
     .card{
@@ -44,6 +44,9 @@
         color: white;
         background-color:#fa6c2f;
         margin:0%;
+    }
+    .row{
+        margin-top: 3%;
     }
 
 </style>
@@ -71,24 +74,27 @@
         </div>
     </nav>
     <h2 class= "title">TRAVELY<h2>
-    <?php
-        $data = $db->query("SELECT `wisata`, `caption`, `username` FROM `post` JOIN 
-        `destination` USING (`id_destination`) JOIN `user` USING (`id_user`)  WHERE `id_destination` = $_GET[id_destination]");
-        $no = 0;
-        while ($row = $data->fetch_array()){
-            $no++;
-    ?>
-        <div class="card text-white mb-3 col-6 bg-light">
-            <div class="card-header"><?php echo $row['username'] ?></div>
-            <div class="card-body">
-                <h5 class="card-title"><?php echo $row['wisata'] ?></h5>
-                <p class="card-text"><?php echo $row['caption'] ?></p>
-            </div>
+    <div class="row">
+        <div class="col-md-11">
+            <?php
+                $data = $db->query("SELECT `wisata`, `caption`, `username` FROM `post` JOIN 
+                `destination` USING (`id_destination`) JOIN `user` USING (`id_user`)  WHERE `id_destination` = $_GET[id_destination]");
+                $no = 0;
+                while ($row = $data->fetch_array()){
+                    $no++;
+            ?>
+                <div class="card text-white mb-3 bg-light">
+                    <div class="card-header">@<?php echo $row['username'] ?></div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $row['wisata'] ?></h5>
+                        <p class="card-text"><?php echo $row['caption'] ?></p>
+                    </div>
+                </div>
+                <?php
+                    }
+                ?>
         </div>
-        <?php
-            }
-        ?>
-    
+    </div>    
 </body>
 
 </script>
