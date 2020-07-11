@@ -26,7 +26,7 @@
     }
     body{
         padding: 0px;
-        background-image: url('87849.jpg');
+        background-image: url('./images/87849.jpg');
         background-size:cover;
     }
     .card{
@@ -45,8 +45,8 @@
         background-color:#fa6c2f;
         margin:0%;
     }
-    .btn{
-        align: right;
+    .btn-group{
+        float: right;
     }
 
 </style>
@@ -58,7 +58,7 @@
                     <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Posts</a>
+                    <a class="nav-link active" href="#">My Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
@@ -74,34 +74,38 @@
         </div>
     </nav>
     <h2 class= "title">TRAVELY<h2>
-    <?php
-        $user= $_SESSION['user']['id_user'];
-        $data = $db->query("SELECT `id_post`,`wisata`, `caption`, `username` FROM `post` JOIN 
-        `destination` USING (`id_destination`) JOIN `user` USING (`id_user`)  WHERE `id_user` = '$user'");
-        $no = 0;
-        while ($row = $data->fetch_array()){
-            $no++;
-    ?>
-        <div class="card text-white mb-3 col-6 bg-light">
-            <div class="card-header">@<?php echo $row['username'] ?>
-                <div class="btn-group">
-                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="./toc-24px.svg" alt="" height="40px" width="40px">
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="Editform.php?edit=<?php echo $row['id_post'] ?>">Edit</a>
-                        <a class="dropdown-item" href="Deletepost.php?post=<?php echo $row['id_post'] ?>">Delete</a>
+    <div class="row">
+        <div class="col-lg-11">
+            <?php
+                $user= $_SESSION['user']['id_user'];
+                $data = $db->query("SELECT `id_post`,`wisata`, `caption`, `username` FROM `post` JOIN 
+                `destination` USING (`id_destination`) JOIN `user` USING (`id_user`)  WHERE `id_user` = '$user'");
+                $no = 0;
+                while ($row = $data->fetch_array()){
+                    $no++;
+            ?>
+                <div class="card text-white mb-3 col-6 bg-light">
+                    <div class="card-header">@<?php echo $row['username'] ?>
+                        <div class="btn-group">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="./toc-24px.svg" alt="" height="40px" width="40px">
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="Editform.php?edit=<?php echo $row['id_post'] ?>">Edit</a>
+                                <a class="dropdown-item" href="Deletepost.php?post=<?php echo $row['id_post'] ?>">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $row['wisata'] ?></h5>
+                        <p class="card-text"><?php echo $row['caption'] ?></p>
                     </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title"><?php echo $row['wisata'] ?></h5>
-                <p class="card-text"><?php echo $row['caption'] ?></p>
-            </div>
+                <?php
+                    }
+                ?>
         </div>
-        <?php
-            }
-        ?>
+    </div>
     
 </body>
 
