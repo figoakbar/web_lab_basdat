@@ -147,6 +147,14 @@
     a:hover{
         text-decoration: none;
     }
+    .carousel{
+        width: 80%;
+        margin-top: 15%;
+    }
+    .d-block{
+        border-radius: 7%;
+        height: 330px;
+    }
 </style>
 <body>
 
@@ -188,14 +196,14 @@
                     <div class="swiper-container md-3">
                         <div class="swiper-wrapper">
                         <?php
-                            $data = $db->query("SELECT * FROM `destination`");
+                            $data = $db->query("SELECT * FROM `destination` WHERE id_destination < 7");
                             $no = 0;
                             while ($row = $data->fetch_array()){
                                 $no++;
                         ?>
                             <div class="swiper-slide" style="background-image: url('<?php echo $row['foto_wisata'] ?>')">
                                 <div class="container">
-                                <a href="#"><h5 class="mb-0"><?php echo $row['negara'] ?></h5></a>
+                                <a href="Timeline.php?id_destination=<?php echo $row['id_destination'] ?>"><h5 class="mb-0"><?php echo $row['negara'] ?></h5></a>
                                     <p class="desc"><?php echo $row['wisata'] ?></p>
                                 </div>
                             </div>
@@ -204,6 +212,47 @@
                             ?>
                         </div>
                     </div>
+                    <center>
+                        <div id=carouselExampleControls class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="view">
+                                        <img class="d-block w-100" src="./images/193174.jpg" alt="First slide">
+                                        <div class="mask rgba-black-light"></div>
+                                    </div>
+                                    <div class="carousel-caption">
+                                        <h3 class="h3-responsive">Share Your Experience With Us!</h3>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                        <div class="view">
+                                            <img class="d-block w-100" src="./images/Free-download-People-Wallpaper-1920x1080-for-your-Desktop-.jpg" alt="Second slide">
+                                            <div class="mask rgba-black-light"></div>
+                                        </div>
+                                        <div class="carousel-caption">
+                                            <h3 class="h3-responsive">Share Your Fun!</h3>
+                                        </div>
+                                    </div>
+                                <div class="carousel-item">
+                                    <div class="view">
+                                        <img class="d-block w-100" src="./images/photo-1508672019048-805c876b67e2.jpg" alt="Second slide">
+                                        <div class="mask rgba-black-light"></div>
+                                    </div>
+                                    <div class="carousel-caption">
+                                        <h3 class="h3-responsive">Share Your Stories!</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </center>
                 </div>
             </div>
                 
