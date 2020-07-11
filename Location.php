@@ -25,7 +25,7 @@
     }
 
     .title-image{
-            background-image: url('38580.jpg');
+            background-image: url('./images/38580.jpg');
             background-size:cover;
     }
 
@@ -113,7 +113,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -125,7 +125,7 @@
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"role="button">
                     <img src="./account.svg" alt="" height="40px" width="40px"></a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="profile.php">Profile</a>
                             <a class="dropdown-item" href="Logout.php">logout</a>
                         </div>
                 </li>
@@ -135,10 +135,12 @@
     <h2 class= "title">TRAVELY<h2>
     <div class="title-image" style="padding-bottom: 200px; margin: 0px;">
 	    <div class="container" style="margin-top: 0px;">
-            <h1 class='slogan'>Lorem, ipsum dolor.</h1>
+            <h1 class='slogan'>Explore The World</h1>
 	    </div>
 	</div>
-    <div style='text-align: center; padding-top: 5%;'><h1>Choose Your Destination</h1></div>
+    <center>
+        <button class="btn" onclick='top.location="FormUpload.php"' >Share Your Experience!</button>
+    </center>
     <div class="container-landing-asia">
                     <h2>Asia</h2>
                     <div class="swiper-container md-3">
@@ -186,9 +188,8 @@
                     </div>
                 </div>
                 <div>
-                <center>
-                    <button class="btn" onclick='top.location="FormUpload.php"' >Share Your Experience!</button>
-                </center>
+               
+    
 
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
