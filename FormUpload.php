@@ -46,7 +46,7 @@
     }
 
     .title-image{
-            background-image: url('38580.jpg');
+            background-image: url('./images/38580.jpg');
             background-size:cover;
     }
 
