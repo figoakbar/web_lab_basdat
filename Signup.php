@@ -142,7 +142,6 @@
 			<div class="grid-left">
                 <div class="container">
                     <img src="259516.jpg" alt="Snow" style="width:100%">
-                    <h1 class = "text"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
                     <h2 class= "title">TRAVELY<h2>
                 </div>
 			</div>
