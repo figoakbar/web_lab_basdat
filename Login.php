@@ -130,7 +130,6 @@ if(isset($_POST['login'])){
 			<div class="grid-left">
                 <div class="container">
                     <img src="photo-1549880338-65ddcdfd017b.jfif" alt="Snow" style="width:100%">
-                    <h1 class = "text"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
                     <h2 class= "title">TRAVELY<h2>
                 </div>
 			</div>
