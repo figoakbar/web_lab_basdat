@@ -141,7 +141,7 @@
 <div class="grid">
 			<div class="grid-left">
                 <div class="container">
-                    <img src="259516.jpg" alt="Snow" style="width:100%">
+                    <img src="./images/259516.jpg" alt="Snow" style="width:100%">
                     <h2 class= "title">TRAVELY<h2>
                 </div>
 			</div>
