@@ -129,7 +129,7 @@ if(isset($_POST['login'])){
 <div class="grid">
 			<div class="grid-left">
                 <div class="container">
-                    <img src="photo-1549880338-65ddcdfd017b.jfif" alt="Snow" style="width:100%">
+                    <img src="./images/photo-1549880338-65ddcdfd017b.jfif" alt="Snow" style="width:100%">
                     <h2 class= "title">TRAVELY<h2>
                 </div>
 			</div>
