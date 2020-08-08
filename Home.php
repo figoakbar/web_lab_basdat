@@ -161,7 +161,7 @@
 <div class="grid">
 			<div class="grid-left">
                 <div class="container">
-                    <img src="7cd6dc7b34af544375336c288aec69da.jpg" alt="Snow" style="width:100%">
+                    <img src="./images/7cd6dc7b34af544375336c288aec69da.jpg" alt="Snow" style="width:100%">
                     <h1 class = "text">Get Ready For Your Journey And Share It With Us.</h1>
                     <h2 class= "title">TRAVELY<h2>
                     <button class="btn" onclick='top.location="Location.php"' >Get Started</button>
